@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+<head>
+     <title>PrezHarp -- Lady Be Good Proto 0.2</title>
+    
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     
+     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+     <link href="css/pbshuffle.css" rel="stylesheet" type="text/css" />
+     
+     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+     <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+  
+     <style type=text/css>
+           .ui-slider {
+               width : 70% !important;
+          }
+          .ui-slider-input {
+               display : none !important;
+          }
+          .ui-mobile-viewport {
+           -webkit-tap-highlight-color: rgba(255, 0, 0, 0) !important;
+          }
+         
+          #clock {
+               font-size:1.0em;
+               margin-left:.5em;
+               margin-top:1em;
+               margin-bottom:.5em;
+               padding:5px;
+                background-color:black;
+               color:white;
+               float:left;
+               
+          }
+          
+          #playstatus {
+               font-size:1em;
+              margin-top:1.5em;
+               margin-left:1em;
+               margin-bottom:.5em;
+               float:left;
+          }
+          
+          
+          .incrementor {
+          }
+          
+     html { background-color: #333; }
+    @media only screen and (min-width: 1025px){
+        .ui-page {
+            width: 960px !important;
+            margin: 0 auto !important;
+            position: relative !important;
+           
+        }
+        
+        .ui-slider {
+          width : 50% !important;
+          margin-left:240px !important;
+          }
+          
+          #clock {
+               margin-left:240px;
+               background-color:black;
+               color:white;
+               width:4.2%;
+               padding:.35em;
+          }
+          
+          #phraseid {
+               margin-left:240px;
+          }
+          
+          .controlpanel {
+                margin-left:240px;
+          }
+          
+          #customloop {
+               margin-left:240px;
+          }
+          
+          #phraseloop {
+               margin-left:240px;
+          }
+          
+          
+    }
+     </style>
+  
+     <script>
+           
+           var track =  {
+               name:"x",
+               url:"x",
+               currentSegment:0,
+               segments:[
+                          {id:"1:1",start:2.3,end:15.2,notation:[0,4,7],scoreImg:"img.jpg",description:"aaaaaaaa"},
+                          {id:"1:2",start:15.3,end:27.5,notation:[0,4,7],scoreImg:"img.jpg",description:"bbbbbbbb"}
+               ],
+               loopStart:function() {
+                    return this.segments[this.currentSegment].start;
+               },
+               loopEnd:function(){
+                     return this.segments[this.currentSegment].end;
+               }
+          }
+ 
+          function setupSeekbar() {
+               
+               seekbar.min = audio.startTime;
+               seekbar.max = audio.startTime + audio.duration;
+          }
+          
+          function seekAudio() {
+               audio.currentTime = seekbar.value;
+          }
+          
+          function updateUI() {
+               console.log(audio.currentTime);
+               var lastBuffered = audio.buffered.end(audio.buffered.length-1);
+               seekbar.min = audio.startTime;
+               seekbar.max = lastBuffered;
+               $("input").val( String(audio.currentTime));
+               $("input").slider('refresh');
+          }
+     </script>
+  
+</head> 
+<body>
+
+  <div data-role="page">
+
+    <div data-role="header">
+      PrezHarp -- Lady Be Good
+    </div>
+
+    <div data-role="content"> 
+          <audio src="dshuffle.mp3" id="audio" preload="auto"></audio>
+          <div><input type=range  min=1 max=180 name="seekbar" id="seekbar" data-highlight="true" /></div>
+          
+          <div id="infopanel">
+               <div id="clock">00:00</div>
+                <div id="playstatus">playing  phrase 1:1</div>
+          </div>
+          <div style="clear:both" />
+        <div class="controlpanel">
+               <button id="play"       data-mini="true"  data-inline="true">&nbsp;Play&nbsp;</button>
+               <button id="rewind"  data-mini="true"  data-inline="true" >Rewind</a></button>
+         </div>
+          <div class="controlpanel">
+               <button id="loopPhrase" data-mini="true"  data-inline="true">Loop Phrase 1:1</button>
+               <br/>
+               Custom Loop:
+               <button id="loopStart" data-mini="true"  data-inline="true">Start</button>
+               <button id="loopEnd" data-mini="true"  data-inline="true">End</button>
+          </div>
+          
+           <div data-role="collapsible" data-collapsed="true" >
+			<h3 >Harmonica Tablature</h3>
+			<div>
+				<a href="#" data-role="button" data-mini="true" class="loopBtn"  data-inline="true" >Loop</a>&nbsp;Phrase 1
+			</div>
+			<div id="tabDiv" >
+				<div class="outTab"><img src="uparrow.png"><br/>1</div>
+				<div class="outTab"><img src="uparrow.png"><br/>1</div>
+				<div class="inTab"><img src="uparrow.png"><br/>2</div>
+				<div class="inTab"><img src="uparrow.png"><br/>2</div>
+				<div class="outTab"><img src="uparrow.png"><br/>3</div>
+				<div class="outTab"><img src="uparrow.png"><br/>3</div>
+				<div class="outTab"><img src="uparrow.png"><br/>4</div>
+				<div class="outTab"><img src="uparrow.png"><br/>4</div>
+				<div class="outTab"><img src="downarrow.png"><br/>5</div>
+				<div class="outTab"><img src="downarrow.png"><br/>5</div>
+				<div class="outTab"><img src="uparrow.png"><br/>4</div>
+				<div class="outTab"><img src="uparrow.png"><br/>4</div>
+				<div class="outTab"><img src="uparrow.png"><br/>3</div>
+				<div class="outTab"><img src="uparrow.png"><br/>3</div>
+				<div class="inTab"><img src="uparrow.png"><br/>2</div>
+				<div class="inTab"><img src="uparrow.png"><br/>2</div>
+			</div>
+			<div class="lastoutTab"></div>
+			
+			
+		</div>
+           <div data-role="collapsible" data-collapsed="true" >
+			<h3>Solfege</h3>
+				<div id="solfege">
+				DO DO ME ME SOL SOL LA LA TE TE SOL SOL ME ME DO DO
+				</div>
+		</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
+<script>
+     
+     
+     var audio = document.getElementById("audio");
+     var playBtnBehavior = "play";
+     audio.addEventListener("ondurationchange",setupSeekbar);
+     audio.addEventListener('durationchange', setupSeekbar);
+     audio.addEventListener('timeupdate', updateUI);
+     
+     $(document).bind('mobileinit',function(){
+          $.extend(  $.mobile , 
+               {
+                    defaultPageTransition: "none"
+               });
+     });
+     
+     $("input").live ("slidercreate", function ()
+     {
+            $("input").bind ("change", function (event)
+            {
+               var minutes = Math.floor($(this).val()/60);
+               if (minutes < 10 ) {
+                    minutes = "0" + minutes.toString();
+               }
+               var seconds = $(this).val()%60;
+               if ( seconds < 10 ) {
+                    seconds = "0" + seconds.toString();
+               }
+              $("#clock").text(minutes+":" +seconds);
+              
+              if ( audio.currentTime >= track.loopEnd() ) {
+                    
+                    audio.currentTime = track.loopStart();
+                    btnLabel = "Loop Phrase 99:99";
+                    $('#loopPhrase').html(btnLabel).button('refresh');
+              }
+             
+            }); 
+            
+             $(".ui-slider").bind ("vmousedown", function (event){
+                   audio.pause();
+             });
+             
+              $(".ui-slider").bind ("vmouseup", function (event){
+                   audio.currentTime = $("input").val();
+                   audio.play();
+             });
+       
+       
+     });
+     
+     $( "#play").live( "click", function( event, data ) {
+          var btnLabel = "";  
+          if ( playBtnBehavior == "play" ) {
+               audio.play();
+               btnLabel = "Pause";
+                playBtnBehavior = "pause";
+          } else {
+               audio.pause();
+               btnLabel = "Play";
+               playBtnBehavior = "play";
+          }
+            $('#play').html(btnLabel).button('refresh');
+             
+     } );
+     $( "#pause").live( "click", function( event, data ) {
+              audio.pause();
+     } );
+     $( "#rewind").live( "click", function( event, data ) {
+              audio.currentTime = 0;
+     } );
+     
+     $( "#loopPhrase").live( "click", function( event, data ) {
+             //loopEnd = audio.currentTime;
+             btnLabel = "Phrase Looped"
+              $('#loopPhrase').html(btnLabel).button('refresh');
+              $('#playstatus').html("looping phrase 1:1");
+     } );
+     
+     $("#loopStart").live("click",function(event,data) {
+            var roundedTime = Math.round(audio.currentTime*Math.pow(10,1))/Math.pow(10,1);
+            var btnLabel  =  String(roundedTime);
+           $('#loopStart').html(btnLabel).button('refresh');
+     });
+     
+
+</script>
+
+

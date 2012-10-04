@@ -1,0 +1,300 @@
+/*
+ * Skin for jPlayer Plugin (jQuery JavaScript Library)
+ * http://www.happyworm.com/jquery/jplayerbackground-color:yellow;
+ *background-color:blue;
+ * Skin Name: Blue Monday
+ *
+ * Copyright (c) 2010 Happyworm Ltd
+ * Dual licensed under the MIT and GPL licenses.
+ *  - http://www.opensource.org/licenses/mit-license.php
+ *  - http://www.gnu.org/copyleft/gpl.html
+ *
+ * Author: Silvia Benvenuti
+ * Skin Version: 3.0 (jPlayer 2.0.0)
+ * Date: 20th December 2010
+ */
+div.jp-player {
+}
+
+div.jp-audio,
+div.jp-video {
+
+	/* Edit the font-size to counteract inherited font sizing.
+	 * Eg. 1.25em = 1 / 0.8em
+	 */
+
+	font-size:1em; /* No parent CSS that can effect the size in these demos */
+
+	font-family:Verdana, Arial, sans-serif;
+	line-height:1.6;
+	color: #000;
+	
+}
+div.jp-audio {
+	width:50%;
+	margin:auto;
+	border:2px solid #338;
+}
+
+@media screen and (max-width:640px) {
+	div.jp-audio {
+		width:100%;
+	}
+}
+
+div.jp-interface {
+	position: relative;
+	background-color:#888;
+	width:100%;
+}
+
+div.playcontrols {
+background-color:white;
+}
+
+div.jp-audio div.jp-type-single div.jp-interface {
+	height:100px;
+}
+
+div.jp-interface ul.jp-controls {
+	list-style-type:none;
+	padding:0;
+	margin: 0;
+}
+div.jp-interface ul.jp-controls li {
+	display:inline;
+}
+div.jp-interface ul.jp-controls a {
+	position: absolute;
+	overflow:hidden;
+}
+a.jp-play,
+a.jp-pause {
+	width:32px;
+	height:32px;
+	z-index:1;
+}
+
+div.jp-audio div.jp-type-single a.jp-play,
+div.jp-audio div.jp-type-single a.jp-pause {
+	top:57px;
+	left:25%;
+}
+
+a.jp-play {
+	background: url("../skin/buttons/play.png") no-repeat;
+}
+a.jp-play:hover {
+	background: url("../skin/buttons/playhover.png") no-repeat;
+	
+}
+a.jp-pause {
+	background: url("../skin/buttons/pause.png") no-repeat;
+	display: none;
+}
+a.jp-pause:hover {
+	background: url("../skin/buttons/pausehover.png") no-repeat;
+}
+div.jp-audio div.jp-type-single a.jp-stop {
+	top:57px;
+	left:5%;
+}
+
+a.jp-stop {
+	background: url("../skin/buttons/rewind.png") no-repeat;
+	width:32px;
+	height:32px;
+	z-index:1;
+}
+a.jp-stop:hover {
+	background: url("../skin/buttons/rewindhover.png") no-repeat;
+}
+
+
+div.jp-progress {
+	position: absolute;
+	overflow:hidden;
+	background-color: #338;
+}
+div.jp-audio div.jp-type-single div.jp-progress {
+	top:10px;
+	width:90%;
+	height:20%;
+	left:5%
+}
+
+
+div.jp-seek-bar {
+	background-color:#338;
+	width:0px;
+	
+	/* height:15px; */
+	height:100%;
+	cursor: pointer;
+}
+div.jp-play-bar {
+	background-color:yellow;
+	width:0px;
+	opacity:.75;
+	height:100%;
+}
+
+/* The seeking class is added/removed inside jPlayer */
+div.jp-seeking-bg {
+	background: url("../skin/pbar-ani.gif");
+}
+
+a.jp-mute,
+a.jp-unmute {
+	width:32px;
+	height:32px;
+}
+div.jp-audio div.jp-type-single a.jp-mute,
+div.jp-audio div.jp-type-single a.jp-unmute {
+	top:57px;
+	left:45%;
+}
+
+a.jp-mute {
+	background: url("../skin/buttons/volume.png") no-repeat;
+}
+a.jp-mute:hover {
+	background: url("../skin/buttons/volumehover.png") no-repeat;
+}
+a.jp-unmute {
+	background: url("../skin/buttons/mute.png") no-repeat;
+	display: none;
+}
+a.jp-unmute:hover {
+	background: url("../skin/buttons/mutehover.png") no-repeat;
+}
+
+
+div.jp-volume-bar {
+	position: absolute;
+	overflow:hidden;
+	cursor: pointer;
+}
+
+
+div.jp-audio div.jp-type-single div.jp-volume-bar {
+	top:62px;
+	left:55%;
+	width:30%;
+	height:20%;
+	background-color:#338;
+}
+
+div.jp-volume-bar-value {
+	/*background: url("jplayer.blue.monday.jpg") 0 -202px repeat-x;*/
+	background-color:yellow;
+	opacity:.75;
+	width:0px;
+	height:35px;
+}
+
+
+div.jp-current-time,
+div.jp-duration {
+	position: absolute;
+	font-size:1em;
+	font-style:bold;
+	text-shadow:0 0 0;
+}
+div.jp-duration {
+	text-align: right;
+}
+div.jp-audio div.jp-type-single div.jp-current-time,
+div.jp-audio div.jp-type-single div.jp-duration {
+	top:30px;
+	left:5%;
+	width:90%;
+}
+
+div.jp-jplayer {
+	width:0px;
+	height:0px;
+}
+
+div.jp-jplayer {
+	background-color: #000000;
+}
+
+#referenceMedia {
+				margin-left:auto;
+				margin-right:auto;
+				width:200px;
+}
+canvas { 
+	border: 1px solid black; 
+	background-color:#F0F0FF;
+	padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+
+#notationOpts{
+	text-align:center;
+	padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#slider-0{
+	/*display:none;*/
+}
+
+
+#videoFrame {
+}
+
+.outTab {
+	float:left;
+	margin:1px;
+	padding:2px;
+	text-align:center;
+	font-size:1.5em;
+	font-weight:bold;
+	background-color:rgb(27,145,224);
+	color:rgb(245,217,93);
+	
+}
+
+.inTab {
+	float:left;
+	margin:1px;
+	padding:2px;
+	text-align:center;
+	font-size:1.5em;
+	font-weight:bold;
+	background-color:rgb(245,217,93);
+	color:rgb(27,145,224);
+	
+}
+
+.lastoutTab {
+	clear:both;
+	margin:5px;
+	text-align:center;
+	font-size:1.5em;
+	font-weight:bold;
+	background-color:yellow;
+}
+
+#tabDiv,#solfege {
+	display:block;
+	/*text-align:center;*/
+	margin-left:5%;
+	margin-right:0%;
+}
+
+#loopBtnContainer {
+	display:block;
+	text-align:center;
+	width:80%;
+	margin:auto;
+}

@@ -1,0 +1,48 @@
+<html>
+<header>
+   
+    <script>
+       
+        function setupSeekbar() {
+          seekbar.min = audio.startTime;
+          seekbar.max = audio.startTime + audio.duration;
+        }
+       
+        function seekAudio() {
+          audio.currentTime = seekbar.value;
+          console.log("timeupdate");
+        }
+
+        function updateUI() {
+          var lastBuffered = audio.buffered.end(audio.buffered.length-1);
+          seekbar.min = audio.startTime;
+          seekbar.max = lastBuffered;
+          seekbar.value = audio.currentTime;
+        }
+       
+    </script>
+   
+
+</header>
+<body>
+     <audio src="dshuffle.mp3" id="audio"></audio>
+    <input type="range" step="any" id="seekbar"></input>
+     <p>
+        <button type="button" onclick="audio.play();">Play</button>
+        <button type="button" onclick="audio.pause();">Pause</button>
+        <button type="button" onclick="audio.currentTime = 0;"><< Rewind</button>
+    </p>
+    <script>  
+          var audio = document.getElementById("audio");
+          var seekbar = document.getElementById('seekbar');
+          seekbar.value = 0;
+           audio.addEventListener("ondurationchange",setupSeekbar);
+          audio.addEventListener('durationchange', setupSeekbar);
+          audio.addEventListener('timeupdate', updateUI);
+          
+          $( "#seekbar" ).slider({
+               create: function(event, ui) { alert("created"); }
+          });
+    </script>
+</body>
+</html>
