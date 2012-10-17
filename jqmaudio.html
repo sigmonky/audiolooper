@@ -323,7 +323,7 @@
      $("#loopStart").live("click",function(event,data) {
             var roundedTime = Math.round(audio.currentTime*Math.pow(10,1))/Math.pow(10,1);
             var btnLabel  =  String(roundedTime);
-           $('#loopStart').html(btnLabel).button('refresh');
+           $('#loopStart span span').html(btnLabel);
      });
      
      
