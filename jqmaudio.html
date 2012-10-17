@@ -4,15 +4,24 @@
      <title>PrezHarp -- Lady Be Good Proto 0.2</title>
     
      <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
      
-     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-     <link href="css/pbshuffle.css" rel="stylesheet" type="text/css" />
+     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <link href="css/pbshuffle.css" rel="stylesheet" type="text/css" />
      
-     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-     <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+     
+     <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+     <script src="js/uadetector.js"></script>
   
      <style type=text/css>
+         
+         #play {
+              
+               /*width:1.8em;
+               height:1.8em;
+               */
+          }
            .ui-slider {
                width : 70% !important;
           }
@@ -50,9 +59,10 @@
      html { background-color: #333; }
     @media only screen and (min-width: 1025px){
         .ui-page {
-            width: 960px !important;
+           width: 960px !important;
             margin: 0 auto !important;
             position: relative !important;
+         
            
         }
         
@@ -87,10 +97,24 @@
           
           
     }
+     @media only screen and (max-width: 1024px){
+      }
+       @media only screen and (max-width: 770px){
+      }
+      @media only screen and (max-width: 480px){
+           .ui-slider {
+               width : 25em !important;
+          }
+      }
+       @media only screen and (max-width: 320px){
+          .ui-slider {
+               width : 15em !important;
+          }
+      }
      </style>
   
      <script>
-           
+          
            var track =  {
                name:"x",
                url:"x",
@@ -130,7 +154,7 @@
 </head> 
 <body>
 
-  <div data-role="page">
+  <div data-role="page" class="type-interior">
 
     <div data-role="header">
       PrezHarp -- Lady Be Good
@@ -142,25 +166,36 @@
           
           <div id="infopanel">
                <div id="clock">00:00</div>
-                <div id="playstatus">playing  phrase 1:1</div>
+                <div id="playstatus" style="float:left;">playing  phrase 1:1</div>
           </div>
           <div style="clear:both" />
-        <div class="controlpanel">
-               <button id="play"       data-mini="true"  data-inline="true">&nbsp;Play&nbsp;</button>
-               <button id="rewind"  data-mini="true"  data-inline="true" >Rewind</a></button>
-         </div>
-          <div class="controlpanel">
-               <button id="loopPhrase" data-mini="true"  data-inline="true">Loop Phrase 1:1</button>
-               <br/>
-               Custom Loop:
-               <button id="loopStart" data-mini="true"  data-inline="true">Start</button>
-               <button id="loopEnd" data-mini="true"  data-inline="true">End</button>
+       <!-- <div class="controlpanel">
+              <div id="play"   data-role="button"   data-mini="false"  data-inline="true"  >Play</div>
+              <div id="pause"   data-role="button"   data-mini="false"  data-inline="true"  >Pause</div>
+               <button id="rewind"  data-mini="false"  data-inline="true" >Rewind</a></button>
+                <button id="loopPhrase" data-mini="false"  data-inline="true">Loop</button>
+         </div>-->
+         <ul id="controlpanel" data-role="controlgroup" data-type="horizontal" >
+                <li id="stop" data-role="button" >Stop</li>
+                <li id="play" data-role="button" >Play</li>
+                <li id="pause" data-role="button" >Pause</li>
+            </ul>          
+          <div  data-role="collapsible" data-collapsed="true">
+                <h3>Looping ( Phrase or Custom )</h3>
+               <div id="customloop">
+                    <div id="phraseLoop" data-role="button"  data-inline="true">Loop Current Phrase</div>
+                    <div style="font-weight:bold;"> Custom Loop </div>
+                    <div>
+                         <div id="loopStart" data-role="button"  data-inline="true">Start</div>
+                         <div id="loopEnd" data-role="button"  data-inline="true">Stop</div>
+                         <div id="loopReset" data-role="button"  data-inline="true">Reset</div>
+                    </div>
+               </div>
           </div>
-          
            <div data-role="collapsible" data-collapsed="true" >
 			<h3 >Harmonica Tablature</h3>
 			<div>
-				<a href="#" data-role="button" data-mini="true" class="loopBtn"  data-inline="true" >Loop</a>&nbsp;Phrase 1
+				<a href="#" data-role="button" data-mini="false" class="loopBtn"  data-inline="true" >Loop</a>&nbsp;Phrase 1
 			</div>
 			<div id="tabDiv" >
 				<div class="outTab"><img src="uparrow.png"><br/>1</div>
@@ -197,6 +232,25 @@
 </body>
 </html>
 <script>
+     console.log($("#seekbar"));
+
+     $(document).on({
+         "mousedown touchstart": function () {
+             $(this).siblings("input").trigger("start");
+         },
+         "mouseup touchend": function () {
+             $(this).siblings("input").trigger("stop");
+         }
+     }, ".ui-slider");
+     
+     $("#seekbar").on("start", function () { 
+        alert("User has started sliding my-slider!");
+     });
+     
+     $("#seekbar").on("stop", function (event) {
+         var value = event.target.value;
+        alert("User has finished sliding my slider, its value is: " + value);
+     });
      
      
      var audio = document.getElementById("audio");
@@ -204,7 +258,9 @@
      audio.addEventListener("ondurationchange",setupSeekbar);
      audio.addEventListener('durationchange', setupSeekbar);
      audio.addEventListener('timeupdate', updateUI);
-     
+     $( "#seekbar" ).bind( "change", function(event, ui) {
+          console.log("change....");
+     });
      $(document).bind('mobileinit',function(){
           $.extend(  $.mobile , 
                {
@@ -212,9 +268,10 @@
                });
      });
      
-     $("input").live ("slidercreate", function ()
-     {
-            $("input").bind ("change", function (event)
+     
+     
+          
+            $("#seekbar").live ("change", function (event)
             {
                var minutes = Math.floor($(this).val()/60);
                if (minutes < 10 ) {
@@ -243,29 +300,17 @@
                    audio.currentTime = $("input").val();
                    audio.play();
              });
-       
-       
-     });
+
      
      $( "#play").live( "click", function( event, data ) {
-          var btnLabel = "";  
-          if ( playBtnBehavior == "play" ) {
                audio.play();
-               btnLabel = "Pause";
-                playBtnBehavior = "pause";
-          } else {
-               audio.pause();
-               btnLabel = "Play";
-               playBtnBehavior = "play";
-          }
-            $('#play').html(btnLabel).button('refresh');
-             
      } );
      $( "#pause").live( "click", function( event, data ) {
               audio.pause();
      } );
-     $( "#rewind").live( "click", function( event, data ) {
+     $( "#stop").live( "click", function( event, data ) {
               audio.currentTime = 0;
+              audio.pause();
      } );
      
      $( "#loopPhrase").live( "click", function( event, data ) {
@@ -280,6 +325,8 @@
             var btnLabel  =  String(roundedTime);
            $('#loopStart').html(btnLabel).button('refresh');
      });
+     
+     
      
 
 </script>
