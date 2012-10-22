@@ -162,6 +162,7 @@
 
     <div data-role="content"> 
           <audio src="dshuffle.mp3" id="audio" preload="auto"></audio>
+          
           <div><input type=range  min=1 max=180 name="seekbar" id="seekbar" data-highlight="true" /></div>
           
           <div id="infopanel">
@@ -186,10 +187,17 @@
                     <div id="phraseLoop" data-role="button"  data-inline="true">Loop Current Phrase</div>
                     <div style="font-weight:bold;"> Custom Loop </div>
                     <div>
-                         <div id="loopStart" data-role="button"  data-inline="true">Start</div>
-                         <div id="loopEnd" data-role="button"  data-inline="true">Stop</div>
-                         <div id="loopReset" data-role="button"  data-inline="true">Reset</div>
+                         <div id="loopStart" data-role="button"  data-inline="true">Begin</div>
+                         <div id="loopEnd" data-role="button"  data-inline="true">End</div>
+                        <!-- <div id="loopReset" data-role="button"  data-inline="true">Reset</div>-->
                     </div>
+                    <label for="select-choice-0" class="select"><span  style="font-weight:bold;">Select a Phrase To Loop</span></label>
+                    <select name="select-choice-0" id="select-choice-0">
+                       <option value="standard">Chorus 1 -- pickup 4 - 1:4</option>
+                       <option value="rush">Rush: 3 days</option>
+                       <option value="express">Express: next day</option>
+                       <option value="overnight">Overnight</option>
+                    </select>
                </div>
           </div>
            <div data-role="collapsible" data-collapsed="true" >
