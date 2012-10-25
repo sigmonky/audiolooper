@@ -1,0 +1,95 @@
+#play {
+    
+     /*width:1.8em;
+     height:1.8em;
+     */
+}
+ .ui-slider {
+     width : 70% !important;
+}
+.ui-slider-input {
+     display : none !important;
+}
+.ui-mobile-viewport {
+ -webkit-tap-highlight-color: rgba(255, 0, 0, 0) !important;
+}
+
+#clock {
+     font-size:1.0em;
+     margin-left:.5em;
+     margin-top:1em;
+     margin-bottom:.5em;
+     padding:5px;
+      background-color:black;
+     color:white;
+     float:left;
+     
+}
+
+#playstatus {
+     font-size:1em;
+    margin-top:1.5em;
+     margin-left:1em;
+     margin-bottom:.5em;
+     float:left;
+}
+
+
+.incrementor {
+}
+
+html { background-color: #333; }
+@media only screen and (min-width: 1025px){
+.ui-page {
+ width: 960px !important;
+  margin: 0 auto !important;
+  position: relative !important;
+
+ 
+}
+
+.ui-slider {
+width : 50% !important;
+margin-left:240px !important;
+}
+
+#clock {
+     margin-left:240px;
+     background-color:black;
+     color:white;
+     width:4.2%;
+     padding:.35em;
+}
+
+#phraseid {
+     margin-left:240px;
+}
+
+.controlpanel {
+      margin-left:240px;
+}
+
+#customloop {
+     /*margin-left:240px;*/
+}
+
+#phraseloop {
+     /*margin-left:240px;*/
+}
+
+
+}
+@media only screen and (max-width: 1024px){
+}
+@media only screen and (max-width: 770px){
+}
+@media only screen and (max-width: 480px){
+ .ui-slider {
+     width : 25em !important;
+}
+}
+@media only screen and (max-width: 320px){
+.ui-slider {
+     width : 15em !important;
+}
+}
