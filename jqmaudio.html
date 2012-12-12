@@ -30,93 +30,95 @@
           </div>
           
           <div id="infopanel">
-               <div id="clock">00:00</div>
-                <div id="playstatus" style="float:left;">playing  phrase 1:1</div>
+              <div id="clock">00:00</div>
+              <div id="playstatus" style="float:left;">playing  phrase 1:1</div>
           </div>
           
           <div style="clear:both" />
          <ul id="controlpanel" data-role="controlgroup" data-type="horizontal" >
-                <li id="stop" data-role="button" >Stop</li>
-                <li id="play" data-role="button" >Play</li>
-                <li id="pause" data-role="button" >Pause</li>
+              <li id="stop" data-role="button" >Stop</li>
+              <li id="play" data-role="button" >Play</li>
+              <li id="pause" data-role="button" >Pause</li>
           </ul>          
           <div  data-role="collapsible" data-collapsed="true">
-                <h3>Looping ( Phrase or Custom )</h3>
-               <div id="customloop">
-                    <div id="phraseLoop" data-role="button"  data-inline="true">Loop Current Phrase</div>
-                    <div style="font-weight:bold;"> Custom Loop </div>
-                    <div>
-                         <div id="loopStart" data-role="button"  data-inline="true">Begin</div>
-                         <div id="loopEnd" data-role="button"  data-inline="true">End</div>
-                        <!-- <div id="loopReset" data-role="button"  data-inline="true">Reset</div>-->
-                    </div>
-                    
-               </div>
-               <label for="select-choice-0" class="select"><span  style="font-weight:bold;">Select a Phrase To Loop</span></label>
-                    <select name="select-choice-0" id="select-choice-0" data-inline="true">
-                       <option value="standard">Chorus 1 -- pickup 4 - 1:4</option>
-                       <option value="rush">Rush: 3 days</option>
-                       <option value="express">Express: next day</option>
-                       <option value="overnight">Overnight</option>
-                    </select>
+            <h3>Looping ( Phrase or Custom )</h3>
+              <div id="customloop">
+                <div id="phraseLoop" data-role="button"  data-inline="true">Loop Current Phrase</div>
+              <div style="font-weight:bold;"> Custom Loop </div>
+              <div>
+                <div id="loopStart" data-role="button"  data-inline="true">Begin</div>
+                <div id="loopEnd" data-role="button"  data-inline="true">End</div>
+              </div>   
+           </div>
+           <label for="select-choice-0" class="select">
+              <span  style="font-weight:bold;">Select a Phrase To Loop</span>
+            </label>
+            <select name="select-choice-0" id="select-choice-0" data-inline="true">
+              <option value="standard">Chorus 1 -- pickup 4 - 1:4</option>
+              <option value="rush">Rush: 3 days</option>
+              <option value="express">Express: next day</option>
+              <option value="overnight">Overnight</option>
+            </select>
           </div>
-           <div data-role="collapsible" data-collapsed="true" >
-			<h3 >Notations</h3>
-			<div>
-				<a href="#" data-role="button" data-mini="false" class="loopBtn"  data-inline="true" >Loop</a>&nbsp;Phrase 1
-			</div>
-			<div data-role="collapsible" data-collapsed="true">
-			     <h3>Harmonica Tablature</h3>
-                    <div id="tabDiv" >
-                         <div class="outTab"><img src="uparrow.png"><br/>1</div>
-                         <div class="outTab"><img src="uparrow.png"><br/>1</div>
-                         <div class="inTab"><img src="uparrow.png"><br/>2</div>
-                         <div class="inTab"><img src="uparrow.png"><br/>2</div>
-                         <div class="outTab"><img src="uparrow.png"><br/>3</div>
-                         <div class="outTab"><img src="uparrow.png"><br/>3</div>
-                         <div class="outTab"><img src="uparrow.png"><br/>4</div>
-                         <div class="outTab"><img src="uparrow.png"><br/>4</div>
-                         <div class="outTab"><img src="downarrow.png"><br/>5</div>
-                         <div class="outTab"><img src="downarrow.png"><br/>5</div>
-                         <div class="outTab"><img src="uparrow.png"><br/>4</div>
-                         <div class="outTab"><img src="uparrow.png"><br/>4</div>
-                         <div class="outTab"><img src="uparrow.png"><br/>3</div>
-                         <div class="outTab"><img src="uparrow.png"><br/>3</div>
-                         <div class="inTab"><img src="uparrow.png"><br/>2</div>
-                         <div class="inTab"><img src="uparrow.png"><br/>2</div>
-                    </div>
-                    <div class="lastoutTab"></div>
-			</div>
-			 <div data-role="collapsible" data-collapsed="true">
-                         <h3>Note Names</h3>
-                    </div>
-                    <div data-role="collapsible" data-collapsed="true">
-                         <h3>Note Numbers</h3>
-                    </div>
-                    <div data-role="collapsible" data-collapsed="true" >
-                    <h3>Solfege</h3>
-                         <div id="solfege">
-                              DO DO ME ME SOL SOL LA LA TE TE SOL SOL ME ME DO DO
-                         </div>
-                    </div>
-                    <a href="scores/limehouseblues.pdf" data-role="button" target="blank">Score PDF</a>
-		</div>
+          <div data-role="collapsible" data-collapsed="true" >
+            <h3 >Notations</h3>
+            <div>
+            	<a href="#" data-role="button" data-mini="false" class="loopBtn"  data-inline="true" >Loop</a>&nbsp;Phrase 1
+            </div>
+      			<div data-role="collapsible" data-collapsed="true">
+              <h3>Harmonica Tablature</h3>
+              <div id="tabDiv" >
+                  <div class="outTab"><img src="uparrow.png"><br/>1</div>
+                  <div class="outTab"><img src="uparrow.png"><br/>1</div>
+                  <div class="inTab"><img src="uparrow.png"><br/>2</div>
+                  <div class="inTab"><img src="uparrow.png"><br/>2</div>
+                  <div class="outTab"><img src="uparrow.png"><br/>3</div>
+                  <div class="outTab"><img src="uparrow.png"><br/>3</div>
+                  <div class="outTab"><img src="uparrow.png"><br/>4</div>
+                  <div class="outTab"><img src="uparrow.png"><br/>4</div>
+                  <div class="outTab"><img src="downarrow.png"><br/>5</div>
+                  <div class="outTab"><img src="downarrow.png"><br/>5</div>
+                  <div class="outTab"><img src="uparrow.png"><br/>4</div>
+                  <div class="outTab"><img src="uparrow.png"><br/>4</div>
+                  <div class="outTab"><img src="uparrow.png"><br/>3</div>
+                  <div class="outTab"><img src="uparrow.png"><br/>3</div>
+                  <div class="inTab"><img src="uparrow.png"><br/>2</div>
+                  <div class="inTab"><img src="uparrow.png"><br/>2</div>
+                </div>
+              <div class="lastoutTab"></div>
+      			</div>
+            <div data-role="collapsible" data-collapsed="true">
+              <h3>Note Names</h3>
+            </div>
+            <div data-role="collapsible" data-collapsed="true">
+              <h3>Note Numbers</h3>
+            </div>
+            <div data-role="collapsible" data-collapsed="true" >
+              <h3>Solfege</h3>
+              <div id="solfege">
+                  DO DO ME ME SOL SOL LA LA TE TE SOL SOL ME ME DO DO
+              </div>
+            </div>
+            <a href="scores/limehouseblues.pdf" data-role="button" target="blank">Score PDF</a>
+		      </div>
            
     </div>
     <div data-role="collapsible" data-collapsed="true" >
-			<h3 >Description</h3>
-			<div id="description">
-			   blah blah blah  <br/>
-			    blah blah blah  <br/>
-			     blah blah blah  <br/>
-			      blah blah blah  <br/>
-			       blah blah blah  <br/>
-			        blah blah blah  <br/>
-			         blah blah blah  <br/>
-			          blah blah blah  <br/>
-			</div>
-	</div>
-
+    <h3 >Description</h3>
+      <div id="description">
+        blah blah blah  <br/>
+        blah blah blah  <br/>
+        blah blah blah  <br/>
+        blah blah blah  <br/>
+        blah blah blah  <br/>
+        blah blah blah  <br/>
+        blah blah blah  <br/>
+        blah blah blah  <br/>
+      </div>
+    </div>
+    <div data-role="footer">
+      PrezHarp -- Lady Be Good
+    </div>
   </div>
 </body>
  <script src="js/audiolooper.js"></script>

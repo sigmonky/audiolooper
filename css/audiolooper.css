@@ -14,6 +14,42 @@
  -webkit-tap-highlight-color: rgba(255, 0, 0, 0) !important;
 }
 
+
+/* up state */
+.ui-btn-up-ios,
+.ui-btn-hover-ios,
+.ui-btn-down-ios {
+    border-radius: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px;
+    box-shadow: none !important; -webkit-box-shadow: none !important; -moz-box-shadow: none !important;
+    text-decoration: none;
+    }
+    .ui-btn-up-ios .ui-btn-inner,
+    .ui-btn-hover-ios .ui-btn-inner,
+    .ui-btn-down-ios .ui-btn-inner {
+        color: white;
+        overflow: visible;
+        text-shadow: 0 -1px 0 #000;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        border: 1px solid #333;
+        border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+        background: -webkit-linear-gradient(top, #89A0BE 0%,#5877A2 50%,#486A9A 51%,#4A6C9B 100%);
+        box-shadow: 0 1px 0 rgba(255,255,255, 0.25), inset 0 1px 1px rgba(0,0,0, 0.2);
+            -webkit-box-shadow: 0 1px 0 rgba(255,255,255, 0.25), inset 0 1px 1px rgba(0,0,0, 0.2);
+            -moz-box-shadow: 0 1px 0 rgba(255,255,255, 0.25), inset 0 1px 1px rgba(0,0,0, 0.2);
+        }
+
+    /* hover state color */
+    .ui-btn-hover-ios .ui-btn-inner {
+        background: -webkit-linear-gradient(top, #42000 0%,#520000 50%,#620000 51%,#720000 100%); /* add a different gradient here */
+        }
+
+    /* down state color */
+    .ui-btn-down-ios .ui-btn-inner {
+        background: -webkit-linear-gradient(top,#42000 0%,#520000 50%,#620000 51%,#720000 100%); /* add a different gradient here */
+        }
+
+
 #clock {
      font-size:1.0em;
      margin-left:.5em;

@@ -1,5 +1,6 @@
 console.log($("#seekbar"));
-     
+     $("#stop").hide();
+     $("#pause").hide();
      var track =  {
                name:"x",
                url:"x",
@@ -105,13 +106,21 @@ console.log($("#seekbar"));
      
      $( "#play").live( "click", function( event, data ) {
                audio.play();
+               $("#pause").show();
+               $("#stop").show();
+               $(this).hide();
      } );
      $( "#pause").live( "click", function( event, data ) {
               audio.pause();
+               $("#play").show();
+               $(this).hide();
      } );
      $( "#stop").live( "click", function( event, data ) {
               audio.currentTime = 0;
               audio.pause();
+              $(this).hide();
+              $("#pause").hide();
+              $("#play").show();
      } );
      
      $( "#loopPhrase").live( "click", function( event, data ) {
