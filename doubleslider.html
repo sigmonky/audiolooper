@@ -1,0 +1,80 @@
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>multi-thumb slider demo</title>
+  
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
+  
+  <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+    
+      <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css">
+    
+    
+  
+  <style type="text/css">
+    body {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+}
+
+#slider {
+    width:90%;
+    height:90px;
+}
+.ui-slider .ui-slider-handle {
+    height:100px;
+}
+
+
+  </style>
+  
+
+
+<script type="text/javascript">//<![CDATA[ 
+
+$(document).ready(function() {
+    $("#slider").slider({
+        min: 0,
+        max: 100,
+        step: 1,
+        values: [10, 70,90],
+        slide: function(event, ui) {
+            for (var i = 0; i < ui.values.length; ++i) {
+                $("input.sliderValue[data-index=" + i + "]").val(ui.values[i]);
+            }
+        }
+    });
+
+    $("input.sliderValue").change(function() {
+        var $this = $(this);
+        $("#slider").slider("values", $this.data("index"), $this.val());
+    });
+});
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <form>
+    <div>
+        <input type="text" class="sliderValue" data-index="0" value="10">
+        <input type="text" class="sliderValue" data-index="1" value="90">
+    </div>
+    <br>
+    <div id="slider"></div>
+</form>
+
+
+  
+
+
+
+
+
+</body></html>
