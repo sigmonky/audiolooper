@@ -45,13 +45,13 @@ console.log($("#seekbar"));
          }
      }, ".ui-slider");
      
-     $("#seekbar").on("start", function () { 
+     $("#seekbar").live("start", function () { 
         alert("User has started sliding my-slider!");
      });
      
-     $("#seekbar").on("stop", function (event) {
+     $("#seekbar").live("stop", function (event) {
          var value = event.target.value;
-        alert("User has finished sliding my slider, its value is: " + value);
+        console.log("User has finished sliding my slider, its value is: " + value);
      });
      
      
@@ -85,12 +85,12 @@ console.log($("#seekbar"));
                }
               $("#clock").text(minutes+":" +seconds);
               
-              if ( audio.currentTime >= track.loopEnd() ) {
+              /*if ( audio.currentTime >= track.loopEnd() ) {
                     
                     audio.currentTime = track.loopStart();
                     btnLabel = "Loop Phrase 99:99";
                     $('#loopPhrase').html(btnLabel).button('refresh');
-              }
+              }*/
              
             }); 
             
