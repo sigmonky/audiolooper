@@ -1,4 +1,4 @@
-console.log($("#seekbar"));
+
      $("#stop").hide();
      $("#pause").hide();
      var track =  {
@@ -53,6 +53,13 @@ console.log($("#seekbar"));
          var value = event.target.value;
         console.log("User has finished sliding my slider, its value is: " + value);
      });
+
+
+     $("input").live ("slidercreate", function ()
+      {
+        console.log("creating slider");
+        /**/
+      });
      
      
      var audio = document.getElementById("audio");
@@ -71,7 +78,17 @@ console.log($("#seekbar"));
      });
      
      
-     
+            $('.ui-slider-handle').live('mouseup', function(){
+                audio.currentTime = $("input").val();
+               audio.play();
+            });
+            $('.ui-slider-handle').live('mousedown', function(){
+               audio.pause();
+            });
+
+            $('.ui-slider-handle').live('touchend', function(){
+                alert("touchend");
+            });
           
             $("#seekbar").live ("change", function (event)
             {
@@ -94,14 +111,7 @@ console.log($("#seekbar"));
              
             }); 
             
-             $(".ui-slider").bind ("vmousedown", function (event){
-                   audio.pause();
-             });
              
-              $(".ui-slider").bind ("vmouseup", function (event){
-                   audio.currentTime = $("input").val();
-                   audio.play();
-             });
 
      
      $( "#play").live( "click", function( event, data ) {
