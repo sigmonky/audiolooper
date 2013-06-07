@@ -1,4 +1,6 @@
 
+
+var paused = 0;
 $("#stop").hide();
 $("#pause").hide();
 var track =  {
@@ -27,42 +29,33 @@ function seekAudio() {
 }
           
 function updateUI() {
-  console.log(audio.currentTime);
+  //console.log(audio.currentTime);
   var lastBuffered = audio.buffered.end(audio.buffered.length-1);
   seekbar.min = audio.startTime;
   seekbar.max = lastBuffered;
-  $("#seekbar").val( String(audio.currentTime));
-  $("#seekbar").slider('refresh');
-  $("#range-1a").val( String(audio.currentTime));
-  $("#range-1a").slider('refresh');
+    $("#seekbar").val( String(audio.currentTime));
+    $("#seekbar").slider('refresh');
+    $("#range-1a").val( String(audio.currentTime));
+    $("#range-1a").slider('refresh');
 }
 
 $(document).on({
    "mousedown touchstart": function () {
-       $(this).siblings("input").trigger("start");
+    console.log("start");
+    audio.pause();
    },
    "mouseup touchend": function () {
-       $(this).siblings("input").trigger("stop");
+       console.log("stop");
+       //$(this).siblings("input").trigger("stop");
+       console.log($(this));
+       console.log("before " + audio.currentTime);
+       audio.currentTime = $("#range-1a").val();
+       console.log("after " + audio.currentTime);
+       audio.play();
    }
-}, ".ui-slider");
+}, ".ui-rangeslider");
      
-$("#seekbar").live("start", function () { 
-  alert("User has started sliding my-slider!");
-});
-     
-$("#seekbar").live("stop", function (event) {
-   var value = event.target.value;
-  console.log("User has finished sliding my slider, its value is: " + value);
-});
 
-
-$("input").live ("slidercreate", function ()
-{
-  console.log("creating slider");
-  /**/
-});
-     
-     
 var audio = document.getElementById("audio");
 var playBtnBehavior = "play";
 
@@ -70,31 +63,8 @@ audio.addEventListener("ondurationchange",setupSeekbar);
 audio.addEventListener('durationchange', setupSeekbar);
 audio.addEventListener('timeupdate', updateUI);
 
-$( "#seekbar" ).bind( "change", function(event, ui) {
-    console.log("change....");
-});
 
-$(document).bind('mobileinit',function(){
-  $.extend(  $.mobile , 
-  {
-    defaultPageTransition: "none"
-  });
-});     
-     
-$('.ui-slider-handle').live('mouseup', function(){
-    audio.currentTime = $("input").val();
-   audio.play();
-});
-
-$('.ui-slider-handle').live('mousedown', function(){
-   audio.pause();
-});
-
-$('.ui-slider-handle').live('touchend', function(){
-    alert("touchend");
-});
-
-$("#seekbar").live ("change", function (event)
+$("#range-1a").live("change", function (event)
 {
    var minutes = Math.floor($(this).val()/60);
    if (minutes < 10 ) {
@@ -106,13 +76,12 @@ $("#seekbar").live ("change", function (event)
    }
   $("#clock").text(minutes+":" +seconds);
   
-  /*if ( audio.currentTime >= track.loopEnd() ) {
-        
-        audio.currentTime = track.loopStart();
-        btnLabel = "Loop Phrase 99:99";
-        $('#loopPhrase').html(btnLabel).button('refresh');
-  }*/
  
+}); 
+
+$("#range-1b").live("change", function (event)
+{
+  console.log("end moved to " + $("#range-1b").val());
 }); 
          
 $( "#play").live( "click", function( event, data ) {
@@ -124,8 +93,9 @@ $( "#play").live( "click", function( event, data ) {
 
 $( "#pause").live( "click", function( event, data ) {
         audio.pause();
-         $("#play").show();
-         $(this).hide();
+        pause = 1;
+        $("#play").show();
+        $(this).hide();
 } );
 $( "#stop").live( "click", function( event, data ) {
         audio.currentTime = 0;

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Virtual Mouse Test</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <script>
+      $("#main").live("pageinit", function(e) {
+        $("#main").bind("vmousemove", function(e) {
+          $("#move").html("<p>Move: " + e.clientX + ", " 
+            + e.clientY + "</p>");
+        });
+        $("#main").bind("vmouseover", function(e) {
+          $("#over").html("<p>Over: " + e.clientX + ", " 
+            + e.clientY + "</p>");
+        });
+        $("#header").bind("vmouseout", function(e) {
+          $("#out").html("<p>Out: " + e.clientX + ", " + 
+            e.clientY + "</p>");
+        });
+        $("#main").bind("vmousedown", function(e) {
+          var whichbtn;
+          switch (e.which) {
+            case 1: whichbtn = "Left Button"; break;
+            case 2: whichbtn = "Center Button"; break;
+            case 3: whichbtn = "Right Button"; break;
+            default: whichbtn = "Tap"; break;
+          }                        
+          $("#down").html("<p>Down: " + e.clientX + ", " + e.clientY + " - " + whichbtn + " </p>");
+        });
+        $("#main").bind("vmouseup", function(e) {
+          $("#up").html("<p>Up: " + e.clientX + ", " + e.clientY + "</p>");
+        });
+        $("#main").bind("vclick", function(e) {
+          $("#click").html("<p>Click: " + e.clientX + ", " + e.clientY + "</p>");
+        });
+      });
+    </script>
+  </head> 
+  <body>
+    <div id="main" data-role="page" >
+      <div data-role="content" id="main">
+        <div id="move"></div>
+        <div id="over"></div>        
+        <div id="out"></div>        
+        <div id="down"></div>
+        <div id="up"></div>
+        <div id="click"></div>
+        <div id="cancel"></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
